@@ -1,2 +1,96 @@
 
-A
+إدارة الأخطاء:
+
+تُستخدم استثناءات عامة دون معالجة تفصيلية للأخطاء (مثل فشل فتح القرص).
+
+خطورة: متوسطة (قد تؤدي إلى تعطل الأداة).
+
+كفاءة الذاكرة:
+
+قراءة 1GB كاملة من القرص في الذاكرة (في main.cpp) قد تستهلك موارد النظام.
+
+خطورة: عالية (خاصة على أنظمة الذاكرة المحدودة).
+
+دقة الاستعادة:
+
+الاعتماد على توقيعات ثابتة دون تحليل ديناميكي (مثل ملفات ZIP المُجزأة).
+
+خطورة: متوسطة (قد تُنتج ملفات تالفة).
+
+تسرب الموارد:
+
+عدم إغلاق المقابض (Handles) في حالات فشل القراءة (في DiskReader.cpp).
+
+خطورة: عالية (استنزاف موارد النظام مع الاستخدام المتكرر).
+
+الوثائق والتعليقات:
+
+يفتقد الكود إلى تعليقات توضيحية، خاصة في أجزاء تحليل نظام الملفات.
+
+خطورة: منخفضة (تصعّب الصيانة والتطوير).
+
+نسبة الخطورة الإجمالية:
+مرتفعة في بيئات الإنتاج بسبب تسرب الموارد وضعف إدارة الأخطاء.
+
+متوسطة للاستخدام العادي مع ملفات صغيرة.
+
+توصيات للتحسين:
+إضافة معالجة أخطاء مفصلة (مثل صلاحيات الوصول إلى القرص).
+
+قراءة البيانات على شكل قطع (Chunks) بدلاً من تحميلها كاملة في الذاكرة.
+
+تحسين دقة التوقيعات (مثل دعم ملفات كبيرة أو مُجزأة).
+
+استخدام مُحلل ZIP لاستخراج البيانات الوصفية من ملفات Office.
+
+توثيق الكود وتعليقات توضيحية للوظائف المعقدة.
+
+E/
+Error Management:
+
+General exceptions are used without detailed error handling (such as disk opening failures).
+
+Severity: Medium (may cause the tool to crash).
+
+Memory Efficiency:
+
+Reading the entire 1GB disk into memory (in main.cpp) may consume system resources.
+
+Severity: High (especially on systems with limited memory).
+
+Recovery Accuracy:
+
+Relying on fixed signatures without dynamic analysis (such as fragmented ZIP files).
+
+Severity: Medium (may produce corrupted files).
+
+Resource Leaks:
+
+Failure to close handles in case of read failures (in DiskReader.cpp).
+
+Severity: High (resource exhaustion with repeated use).
+
+Documentation and Comments:
+
+The code lacks explanatory comments, especially in parts of the file system analysis.
+
+Severity: Low (makes maintenance and development harder).
+
+Overall Risk Level:
+
+High in production environments due to resource leaks and poor error handling.
+
+Medium for normal use with small files.
+
+Improvement Recommendations:
+
+Add detailed error handling (such as disk access permissions).
+
+Read data in chunks instead of loading it fully into memory.
+
+Improve signature accuracy (such as supporting large or fragmented files).
+
+Use a ZIP parser to extract metadata from Office files.
+
+Document the code and add explanatory comments for complex functions.
+
